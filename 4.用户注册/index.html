@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>接收</title>
+</head>
+
+<body>
+    <div class="success">
+        <p>注册成功！你的信息如下</p>
+        <ul>
+            <li>邮箱地址:</li>
+            <li>密码:</li>
+            <li>手机号码:</li>
+        </ul>
+    </div>
+    <script>
+        // http://127.0.0.1:5500/BOM/2.28/index.html?email=3140740172%40qq.com&pw=Wjat58Gd3C8HHhd&phone=17873780850
+        //email=&pw=Wjat58Gd3C8HHhd&phone=
+        const liArr = document.querySelectorAll('li')
+        //获取到name名称
+        const queryStr = window.location.search
+        //拿到第一个后面的值，替换符号分开创建成一个数组
+        const arr = queryStr.slice(1).split('&')
+
+        let email = arr[0].slice(6)
+        let mima = arr[1].slice(3)
+        let phone = arr[2].slice(9)
+        liArr[0].innerHTML = `邮箱地址:${email}`
+        liArr[1].innerHTML = `密码:${mima}`
+        liArr[2].innerHTML = `手机号码:${phone}`
+    </script>
+</body>
+
+</html>

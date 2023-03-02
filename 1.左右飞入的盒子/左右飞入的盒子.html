@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: antiquewhite;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+
+        div {
+            height: 20vh;
+            width: 30vh;
+            background-color: coral;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 10px;
+            transform: translateX(-400px);
+            opacity: 0;
+            transition: 1.5s;
+        }
+
+        div:nth-of-type(even) {
+            transform: translateX(400px);
+        }
+
+        div.show {
+            transform: translateX(0px);
+            opacity: 1;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>拖动滚动条查看效果</h1>
+    <div>你好javascript</div>
+    <div>你好javascript</div>
+    <div>你好javascript</div>
+    <div>你好javascript</div>
+    <div>你好javascript</div>
+    <div>你好javascript</div>
+    <div>你好javascript</div>
+    <div>你好javascript</div>
+    <div>你好javascript</div>
+    <div>你好javascript</div>
+    <script>
+        const divArr = document.querySelectorAll('div')
+        console.log(divArr);
+        //拖动滚动条 有条件添加或删除.shou类
+        window.addEventListener('scroll', shoFn)
+        //函数
+        function shoFn() {
+            divArr.forEach(div => {
+                //元素视口坐标的top值 如果的小于窗口高度的30%
+                if (parseInt(div.getBoundingClientRect().top) < window.innerHeight / 6 * 5) {
+                    div.classList.add('show')
+                } else {
+                    div.classList.remove('show')
+                }
+            })
+
+        }
+    </script>
+</body>
+
+</html>

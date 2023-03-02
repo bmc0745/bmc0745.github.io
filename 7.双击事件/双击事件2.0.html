@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="//at.alicdn.com/t/c/font_3925754_xwwu7wr2lho.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        div {
+            width: 400px;
+            height: 400px;
+            background: red url(../img/gg.jpeg) no-repeat 0% 0% / cover;
+            margin: 0 auto;
+            position: relative;
+            left: 0;
+            top: 0;
+            overflow: hidden;
+        }
+
+        .iconfont {
+            color: red;
+            font-size: 40px;
+        }
+
+        .icon-aixin {
+            position: absolute;
+            left: 0;
+            top: 0;
+            animation: big 1s linear;
+            /* transform: translate(-50%,-50%) scale(0); */
+
+        }
+
+        @keyframes big {
+            form {
+            transform: translate(-50%,-50%) scale(0);
+            opacity: .5;
+            }
+
+            to {
+                transform: translate(-50%, -50%) scale(50);
+                opacity: .3;
+            }
+        }
+
+        h1 {
+            margin: 0 auto;
+        }
+    </style>
+
+</head>
+
+<body>
+    <h1>示意图</h1>
+    <div>
+        <!-- <i class="iconfont icon-aixin"></i> -->
+    </div>
+    <script>
+        // 需求分析：
+        // 1.双击图片，显示红心
+        // 2.红心跟随鼠标显示
+        // 3.红心使用特效显示
+        // 4.显示完毕在消失
+        // 技术分析： dbclick事件+在线图标
+        // 双击显示红心+在线图标库+createElement()+appendChild()
+        const div = document.querySelector('div')
+        console.log(div);
+
+        div.addEventListener('dblclick', (ev) => {
+            let event = ev
+            const aixin = document.createElement('i')
+            aixin.classList.add('iconfont')
+            aixin.classList.add('icon-aixin')
+            //获取鼠标坐标
+            aixin.style.left = ev.clientX - div.offsetLeft -20 + 'px'
+            aixin.style.top = ev.clientY - div.offsetTop -20+ 'px'
+            aixin.style.transform = 'scale(3)'
+            div.appendChild(aixin)
+            setTimeout(() => {
+                aixin.remove()
+            }, 500)
+        })
+    </script>
+</body>
+
+</html>
