@@ -38,10 +38,11 @@
         const input = document.querySelector('input')
         input.addEventListener('click', () => {
             input.style.width = '400px'
-            input.value = '变短吧'
+            input.placeholder = '变短吧'
         })
         input.addEventListener('blur', () => {
             input.style.width = '200px'
+            input.placeholder = ''
         })
     </script>
 </body>
