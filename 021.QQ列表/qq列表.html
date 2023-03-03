@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>qq列表</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        ul,
+        li {
+            list-style-type: none;
+        }
+
+        body {
+            background-color: bisque;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+
+        #qq {
+            width: 80vw;
+        }
+
+        button {
+            width: 100%;
+            padding: 20px;
+            border: none;
+            text-align: left;
+            position: relative;
+        }
+
+        button::after {
+            content: '+';
+            position: absolute;
+            right: 20px;
+            top: 40%;
+            transform: translateY(-50%);
+        }
+
+        button:hover {
+            background-color: brown;
+        }
+
+        .content {
+            text-align: center;
+            max-height: 0;
+            overflow: hidden;
+            transition: .8s;
+        }
+
+        .show {
+            max-height: 200px;
+        }
+        p{
+            background-color: cadetblue;
+        }
+        p:hover{
+            background-color: brown;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="qq">
+        <div class="item">
+            <button>
+                我的好友 </button>
+            <div class="content">
+                <p>火影忍者单挑无敌</p>
+                <p>火影忍者单挑无敌</p>
+                <p>火影忍者单挑无敌</p>
+            </div>
+
+        </div>
+        <div class="item">
+            <button>企业好友</button>
+            <div class="content">
+                <p>张三李四王麻子</p>
+                <p>张三李四王麻子</p>
+                <p>张三李四王麻子</p>
+            </div>
+
+        </div>
+        <div class="item">
+            <button>
+                黑名单</button>
+            <div class="content">
+                <p>黄永福,陈子龙,王进杰,杜星志,马通黎,张涛</p>
+                <p>黄永福,陈子龙,王进杰,杜星志,马通黎,张涛</p>
+                <p>黄永福,陈子龙,王进杰,杜星志,马通黎,张涛</p>
+            </div>
+
+        </div>
+    </div>
+    <script>
+        // 1.点击button 展开content
+        // 2.点击相同的button关闭
+        //3.点击button切换颜色
+        //4.点击按钮下一个关闭上一个
+        const btnArr = document.querySelectorAll('button')
+        // const content = document.querySelectorAll('.content')
+        let last = btnArr[0]
+        let on = true
+        btnArr.forEach((btn) => {
+            btn.addEventListener('click', () => {
+                // 获取元素的兄弟元素
+               if (on) {
+                btn.nextElementSibling.classList.add('show')
+                on = false
+               }else{
+                btn.nextElementSibling.classList.remove('show')
+                
+                on= true
+               }
+            })
+        })
+    </script>
+</body>
+
+</html>
