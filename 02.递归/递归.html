@@ -29,8 +29,8 @@
         const h1 = document.querySelector('h1')
         const input = document.querySelector('input')
         let str = '吃饭、睡觉、写代码....'
-        let num = 0
-        let speed = 500 / input.value 
+        let num = 0 //等于STR的位置
+        let speed = 500 / input.value   //调用的速度
         fn()
         function fn() {
             h1.innerHTML = str.slice(0, num)

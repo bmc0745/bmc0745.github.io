@@ -55,15 +55,16 @@
         }
         const divArr = document.querySelectorAll('#app div')
         console.log(divArr);
+        //鼠标经过 div触发事件颜色变成随机色
         divArr.forEach((div, index) => {
             div.addEventListener('mouseover', () => {
             
                 div.style.background = rgb()
             })
+            //鼠标离开div触发事件 颜色恢复原样
             div.addEventListener('mouseout', () => {
                 timer = setTimeout(() => {
                     div.style.background = 'rgba(91, 89, 87, 0.345)'
-
                 }, 500);
             })
         })

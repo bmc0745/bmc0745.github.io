@@ -2,14 +2,12 @@
 <html lang="en">
 
 <head>
-       
     <meta charset="UTF-8">
-       
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-       
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Document</title>
-        <style>
+    <title>Document</title>
+    <style>
         * {
             margin: 0;
             padding: 0;
@@ -35,12 +33,12 @@
 </head>
 
 <body>
-        <form action="">
-                <textarea name="" id="" cols="300" rows="100">
-        </textarea>
-                <p>0</p>
-            </form>
-       
+    <form action="">
+        <textarea name="" id="" cols="300" rows="100">
+</textarea>
+        <p>0</p>
+    </form>
+
     <!--  
         合成事件：composition事件：compositionstart合成开始(on=false)
          compositionend合成结束(on=true)
@@ -48,7 +46,6 @@
             统计字数
         }
     -->
-       
     <script>
         //获取textarea的value值
         const text = document.querySelector("textarea")
@@ -58,12 +55,13 @@
         let num2 = -1
         text.value = ""
         let flag = true
-
+        //当用户使用拼音输入法开始输入汉字时,compositionstart事件就会被触发
         text.addEventListener('compositionstart', function () {
-            flag = false
+            flag = false    //输入时不计算字数
         })
+        //compositionend表示结束中文输入时触发的事件,不管最后输入的是不是中文都会触发
         text.addEventListener('compositionend', function () {
-            flag = true
+            flag = true //输入英文触发
         })
         text.addEventListener("input", function () {
             if (flag) {
@@ -71,10 +69,11 @@
                 num = str.length
                 p.innerHTML = num
             }
-            if(num >200){
-                p.style.color = 'red'
-                p.innerHTML = -(num-200)
-            }else{
+            //如果字数大于两百
+            if (num > 200) {
+                p.style.color = 'red'           //大于200数字的颜色变成红色
+                p.innerHTML = -(num - 200)     //大于200数字变成负数从-1开始
+            } else {
                 p.style.color = 'black'
             }
         })
